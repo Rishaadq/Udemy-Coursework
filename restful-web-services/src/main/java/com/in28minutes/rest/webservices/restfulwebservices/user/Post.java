@@ -1,0 +1,48 @@
+package com.in28minutes.rest.webservices.restfulwebservices.user;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+
+@Entity
+public class Post {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    @Size(min=10)
+    private String description;
+
+    public Integer getId() {
+        return id;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY) //lazy fetch type will result in the post only being retrieved w/o user details
+    @JsonIgnore
+    private User user;
+
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+}
