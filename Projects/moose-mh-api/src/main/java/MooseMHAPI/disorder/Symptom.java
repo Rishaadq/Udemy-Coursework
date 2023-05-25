@@ -26,6 +26,15 @@ public class Symptom {
     @JsonIgnore
     private Disorder disorder;
 
+    public Symptom(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Symptom() {
+
+    }
+
 
     public Disorder getDisorder() {
         return disorder;
